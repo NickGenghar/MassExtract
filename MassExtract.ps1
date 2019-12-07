@@ -3,9 +3,9 @@ $dirb = "$PSScriptRoot\Extracted\"
 $list = Get-childitem -recurse $dira -include *.zip
 
 foreach($file in $list) {
-    $testdir = Get-ChildItem $file
-    $testdir = $testdir.BaseName
-    $newdir = "$dirb$testdir"
+    $subdir = Get-ChildItem $file
+    $subdir = $subdir.BaseName
+    $newdir = "$dirb$subdir"
 
     Expand-Archive -Path $file -DestinationPath $newdir
     Remove-Item $file
